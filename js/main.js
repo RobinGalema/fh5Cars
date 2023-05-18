@@ -2,7 +2,7 @@ let cars;
 let currentActiveCard;
 
 const getCars = () => {
-  return $.getJSON("/data/cars.json").then((data) => {
+  return $.getJSON("/fh5Cars/data/cars.json").then((data) => {
     return data;
   });
 };
