@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap");
+body {
+  height: 100vh;
+  width: 100%;
+  background: #191825;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+body > * {
+  box-sizing: border-box;
+}
+
+#cars {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#cars .car--card {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0%, -50%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  width: 750px;
+  aspect-ratio: 5/2;
+}
+#cars .car--card .image-container {
+  flex-basis: 55%;
+  width: 55%;
+  overflow: hidden;
+  border-radius: 20px 0px 0px 20px;
+}
+#cars .car--card .image-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+#cars .car--card .car--info {
+  width: 45%;
+  padding: 20px;
+  background: #2e2c44;
+  border-radius: 0px 20px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#cars .car--card .car--info h3 {
+  color: #a5d7e8;
+  font-family: "Figtree", sans-serif;
+  font-size: 48px;
+  margin: 0;
+}
+#cars .car--card .car--info h4 {
+  color: #576cbc;
+  font-family: "Figtree", sans-serif;
+  font-size: 26px;
+  margin-top: 5px;
+}
+#cars .car--card .car-link {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}
+#cars .car--card .car-link a {
+  color: #191825;
+  background: #a5d7e8;
+  display: block;
+  width: 40px;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+}
+#cars .car--card .car-link a:hover {
+  transform: scale(1.1);
+  color: #576cbc;
+}
+#cars .car--card[data-active=true] {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}/*# sourceMappingURL=main.css.map */
