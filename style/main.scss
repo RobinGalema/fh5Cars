@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap");
 
 $dark: #191825;
+$dark100: lighten(
+  $color: $dark,
+  $amount: 10,
+);
 $blue: #a5d7e8;
 $darkBlue: #576cbc;
 
@@ -25,11 +29,11 @@ body > * {
 
   .car--card {
     position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(0%, -50%);
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
     opacity: 0;
-    transition: all 0.3s ease-in-out;
+    transition: all 250ms ease-in-out;
     display: flex;
     width: 750px;
     aspect-ratio: 5/2;
@@ -51,7 +55,7 @@ body > * {
     .car--info {
       width: 45%;
       padding: 20px;
-      background: lighten($color: $dark, $amount: 10);
+      background: $dark100;
       border-radius: 0px 20px 20px 0px;
       display: flex;
       flex-direction: column;
@@ -98,9 +102,60 @@ body > * {
     }
 
     &[data-active="true"] {
-      left: 50%;
+      top: 50%;
       transform: translate(-50%, -50%);
       opacity: 1;
+
+      &.animate__out {
+        top: 100%;
+        opacity: 0;
+        transition: all 250ms ease-in-out;
+      }
+
+      &.animate__finished {
+        box-shadow: 0px 0px 48px 22px lighten($color: $dark100, $amount: 10);
+      }
     }
+  }
+}
+
+@keyframes finishedAnimation {
+  0% {
+    width: 750px;
+  }
+
+  50% {
+    width: 800px;
+  }
+
+  100% {
+    width: 750px;
+  }
+}
+
+#spin-btn {
+  position: absolute;
+  bottom: 20%;
+  background: #f4d35e;
+  color: $dark;
+  border: none;
+  display: block;
+  border-radius: 15px;
+  width: 300px;
+  height: 55px;
+  font-family: "Figtree", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: lighten($color: #f4d35e, $amount: 10);
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+
+  &.disabled {
+    opacity: 0;
+    bottom: 10%;
   }
 }

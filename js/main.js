@@ -1,8 +1,13 @@
+const jsonUrl = "/fh5Cars/data/cars.json";
+// const jsonUrl = "/data/cars.json";
+
 let cars;
 let currentActiveCard;
+let numberOfSpins;
+let currentSpin = 0;
 
 const getCars = () => {
-  return $.getJSON("/fh5Cars/data/cars.json").then((data) => {
+  return $.getJSON(jsonUrl).then((data) => {
     return data;
   });
 };
@@ -24,12 +29,45 @@ const convertCarID = (carID) => {
 };
 
 const animateCards = () => {
-  console.log("animateCards");
+  currentSpin++;
+
+  const lastActiveCard = currentActiveCard;
+  lastActiveCard.addClass("animate__out");
+
+  setTimeout(() => {
+    lastActiveCard.removeClass("animate__out");
+    lastActiveCard.attr("data-active", "false");
+  }, 200);
+
+  nextCard = $(currentActiveCard).next();
+  if (nextCard.length == 0) nextCard = $(".car--card").first();
+
+  $(nextCard).attr("data-active", "true");
+
+  currentActiveCard = nextCard;
+
+  if (numberOfSpins != currentSpin) return;
+
+  currentSpin = 0;
+  setTimeout(() => {
+    currentActiveCard.addClass("animate__finished");
+  }, 250);
+
+  console.log("Spin finished!", currentActiveCard);
+
+  setTimeout(() => {
+    currentActiveCard.removeClass("animate__finished");
+    $("#spin-btn").removeClass("disabled");
+    $("#spin-btn").html("Spin again!");
+  }, 1000);
 };
 
 const pickRandomCar = async (numberOfCars) => {
   if (!cars) cars = await getCars();
   const carsContainer = $("#cars");
+
+  // clear the cars container
+  $(carsContainer).html("");
 
   const shuffledCars = cars.sort(() => 0.5 - Math.random());
   const randomCars = shuffledCars.slice(0, numberOfCars);
@@ -54,16 +92,21 @@ const pickRandomCar = async (numberOfCars) => {
   });
 
   currentActiveCard = $(".car--card[data-active='true']");
-  timer(10, 1000, animateCards);
+  numberOfSpins = Math.floor(Math.random() * (40 - 15 + 1) + 15);
+  timer(numberOfSpins, 250, animateCards);
 };
 
-pickRandomCar(10);
-
 const timer = (limit, interval, func = null) => {
-  for (var i = 0; i < limit + 1; i++) {
+  for (var i = 0; i < limit; i++) {
     setTimeout(function () {
       if (func != null) func();
       else console.warn("Timer is running, but no function is set!");
     }, interval * i);
   }
 };
+
+$("#spin-btn").on("click", () => {
+  pickRandomCar(Math.floor(Math.random() * (25 - 10 + 1) + 25));
+
+  $("#spin-btn").addClass("disabled");
+});
