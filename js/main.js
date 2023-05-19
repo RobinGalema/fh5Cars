@@ -1,5 +1,5 @@
-const jsonUrl = "/fh5Cars/data/cars.json";
-// const jsonUrl = "/data/cars.json";
+// const jsonUrl = "/fh5Cars/data/cars.json";
+const jsonUrl = "/data/cars.json";
 
 let cars;
 let currentActiveCard;
@@ -80,9 +80,23 @@ const pickRandomCar = async (numberOfCars) => {
         <img src="https://www.kudosprime.com/fh5/images/cars/big/fh5_car_${convertCarID(car["K' iD"])}.jpg?v=1">
         </div>
         <div class="car--info">
-            <h3>${car.Maker}</h3>
-            <h4>${car.Model}</h4>
+        <div class="car-title">
+        <h3>${car.Maker}</h3>
+        <h4>${car.Model}</h4>
         </div>
+        <div class="car-tags">
+          <div class="tag year"><span>${car.Year}</span></div>
+          <div class="tag car-type"><span>${car.Group.toLowerCase()}</span></div>
+          <div class="tag class">
+            <span> <b class="letter ${car.Class}">${car.Class} </b><b class="score">${car.Score}</b> </span>
+          </div>
+          <div class="tag drivetrain"><span>${car.DriveTrain}</span></div>
+
+          <div class="tag hp">
+            <span><b class="value">${car.StockHp}</b><b class="tag">PK</b></span>
+          </div>
+        </div>
+      </div>
         <div class="car-link">
             <a href="https://www.kudosprime.com/fh5/car_sheet.php?id=${car["K' iD"]}" target="_blank"><i class="fa-solid fa-link"></i></a>	
         </div>
@@ -106,7 +120,9 @@ const timer = (limit, interval, func = null) => {
 };
 
 $("#spin-btn").on("click", () => {
-  pickRandomCar(Math.floor(Math.random() * (25 - 10 + 1) + 25));
+  setTimeout(() => {
+    pickRandomCar(Math.floor(Math.random() * (25 - 10 + 1) + 25));
+  }, 500);
 
   $("#spin-btn").addClass("disabled");
 });

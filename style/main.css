@@ -50,15 +50,86 @@ body > * {
   border-radius: 0px 20px 20px 0px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
-#cars .car--card .car--info h3 {
+#cars .car--card .car--info .car-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 8px;
+}
+#cars .car--card .car--info .car-tags .tag span {
+  background: #191825;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-family: "Open Sans", sans-serif;
+  color: #a5d7e8;
+  font-weight: 600;
+  font-size: 18px;
+}
+#cars .car--card .car--info .car-tags .tag.class span {
+  padding: 0;
+  background: none;
+}
+#cars .car--card .car--info .car-tags .tag.class span b {
+  margin: 0;
+  font-weight: 600;
+}
+#cars .car--card .car--info .car-tags .tag.class span b.letter {
+  padding: 5px 5px 5px 15px;
+  border-radius: 5px 0px 0px 5px;
+  color: white;
+}
+#cars .car--card .car--info .car-tags .tag.class span b.letter.D {
+  background: #42bdf4;
+}
+#cars .car--card .car--info .car-tags .tag.class span b.letter.C {
+  background: #fcc534;
+}
+#cars .car--card .car--info .car-tags .tag.class span b.letter.B {
+  background: #ff632c;
+}
+#cars .car--card .car--info .car-tags .tag.class span b.letter.A {
+  background: #f43156;
+}
+#cars .car--card .car--info .car-tags .tag.class span b.letter.S1 {
+  background: #b960e8;
+}
+#cars .car--card .car--info .car-tags .tag.class span b.letter.S2 {
+  background: #165edb;
+}
+#cars .car--card .car--info .car-tags .tag.class span b.score {
+  background: white;
+  color: #191825;
+  padding: 5px 15px 5px 15px;
+  border-radius: 0px 5px 5px 0px;
+}
+#cars .car--card .car--info .car-tags .tag.hp span {
+  padding: 0;
+  background: none;
+}
+#cars .car--card .car--info .car-tags .tag.hp span b {
+  font-weight: 600;
+}
+#cars .car--card .car--info .car-tags .tag.hp span b.value {
+  background: #a5d7e8;
+  color: #191825;
+  padding: 5px 15px 5px 15px;
+  border-radius: 5px 0px 0px 5px;
+}
+#cars .car--card .car--info .car-tags .tag.hp span b.tag {
+  background: #191825;
+  padding: 5px 10px 5px 10px;
+  border-radius: 0px 5px 5px 0px;
+}
+#cars .car--card .car--info .car-tags .tag.car-type span {
+  text-transform: capitalize;
+}
+#cars .car--card .car--info .car-title h3 {
   color: #a5d7e8;
   font-family: "Figtree", sans-serif;
   font-size: 48px;
   margin: 0;
 }
-#cars .car--card .car--info h4 {
+#cars .car--card .car--info .car-title h4 {
   color: #576cbc;
   font-family: "Figtree", sans-serif;
   font-size: 26px;

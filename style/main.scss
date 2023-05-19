@@ -59,20 +59,118 @@ body > * {
       border-radius: 0px 20px 20px 0px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
 
-      h3 {
-        color: $blue;
-        font-family: "Figtree", sans-serif;
-        font-size: 48px;
-        margin: 0;
+      .car-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px 8px;
+
+        .tag {
+          span {
+            background: $dark;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-family: "Open Sans", sans-serif;
+            color: $blue;
+            font-weight: 600;
+            font-size: 18px;
+          }
+
+          &.class {
+            span {
+              padding: 0;
+              background: none;
+
+              b {
+                margin: 0;
+                font-weight: 600;
+
+                &.letter {
+                  padding: 5px 5px 5px 15px;
+                  border-radius: 5px 0px 0px 5px;
+                  color: white;
+
+                  &.D {
+                    background: #42bdf4;
+                  }
+
+                  &.C {
+                    background: #fcc534;
+                  }
+
+                  &.B {
+                    background: #ff632c;
+                  }
+
+                  &.A {
+                    background: #f43156;
+                  }
+
+                  &.S1 {
+                    background: #b960e8;
+                  }
+
+                  &.S2 {
+                    background: #165edb;
+                  }
+                }
+
+                &.score {
+                  background: white;
+                  color: $dark;
+                  padding: 5px 15px 5px 15px;
+                  border-radius: 0px 5px 5px 0px;
+                }
+              }
+            }
+          }
+
+          &.hp {
+            span {
+              padding: 0;
+              background: none;
+
+              b {
+                font-weight: 600;
+
+                &.value {
+                  background: $blue;
+                  color: $dark;
+                  padding: 5px 15px 5px 15px;
+                  border-radius: 5px 0px 0px 5px;
+                }
+
+                &.tag {
+                  background: $dark;
+                  padding: 5px 10px 5px 10px;
+                  border-radius: 0px 5px 5px 0px;
+                }
+              }
+            }
+          }
+
+          &.car-type {
+            span {
+              text-transform: capitalize;
+            }
+          }
+        }
       }
 
-      h4 {
-        color: $darkBlue;
-        font-family: "Figtree", sans-serif;
-        font-size: 26px;
-        margin-top: 5px;
+      .car-title {
+        h3 {
+          color: $blue;
+          font-family: "Figtree", sans-serif;
+          font-size: 48px;
+          margin: 0;
+        }
+
+        h4 {
+          color: $darkBlue;
+          font-family: "Figtree", sans-serif;
+          font-size: 26px;
+          margin-top: 5px;
+        }
       }
     }
 
