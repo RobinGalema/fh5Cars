@@ -171,6 +171,166 @@ body > * {
   box-shadow: 0px 0px 48px 22px #434063;
 }
 
+button#modal-open {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  border: none;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #191825;
+  background: #a5d7e8;
+  padding: 10px 25px;
+  border-radius: 10px 0px 0px 10px;
+  transition: all 0.3s ease-in-out;
+}
+button#modal-open:hover {
+  padding-right: 40px;
+  background: #b9e0ed;
+  cursor: pointer;
+}
+
+#recent-spins {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: #040313;
+  width: 33%;
+  min-width: 450px;
+  right: -100vw;
+  transition: all 0.3s ease-in-out;
+}
+#recent-spins.active {
+  right: 0;
+}
+#recent-spins #modal-close {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 40px;
+  left: -25px;
+  background: #576cbc;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #040313;
+  font-size: 22px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+#recent-spins #modal-close:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  background: #b9e0ed;
+}
+#recent-spins .container {
+  padding: 45px;
+}
+#recent-spins .container h3 {
+  font-family: "Figtree", sans-serif;
+  color: #a5d7e8;
+  font-weight: 600;
+  font-size: 32px;
+  margin: 0 0 20px 0;
+}
+#recent-spins .container .spin-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#recent-spins .container .spin-cards .spin-card {
+  width: 100%;
+  aspect-ratio: 5/2;
+  overflow: hidden;
+  display: flex;
+  background: #1a192d;
+  border-radius: 20px;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--img {
+  flex-basis: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px 0px 0px 20px;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content {
+  flex-basis: 45%;
+  padding: 5px 5px 5px 25px;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content h4 {
+  font-family: "Figtree", sans-serif;
+  font-size: 20px;
+  color: #576cbc;
+  margin: 15px 0px 0px 0px;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content h4:first-child {
+  margin-bottom: -10px;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content h4 span {
+  color: #a5d7e8;
+  font-size: 26px;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content .tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content p.year {
+  padding: 5px 15px;
+  border-radius: 5px;
+  background: #2e2c44;
+  color: #a5d7e8;
+  font-family: sans-serif;
+  font-weight: 600;
+  width: -moz-max-content;
+  width: max-content;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content p.class span.letter {
+  padding: 5px 15px;
+  font-family: sans-serif;
+  color: white;
+  font-weight: 600;
+  border-radius: 5px 0px 0px 5px;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content p.class span.letter.D {
+  background: #42bdf4;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content p.class span.letter.C {
+  background: #fcc534;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content p.class span.letter.B {
+  background: #ff632c;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content p.class span.letter.A {
+  background: #f43156;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content p.class span.letter.S1 {
+  background: #b960e8;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content p.class span.letter.S2 {
+  background: #165edb;
+}
+#recent-spins .container .spin-cards .spin-card .spin-card--content p.class span.score {
+  background: white;
+  font-family: sans-serif;
+  color: #191825;
+  font-weight: 600;
+  border-radius: 0px 5px 5px 0px;
+  padding: 5px 15px;
+}
+
 @keyframes finishedAnimation {
   0% {
     width: 750px;

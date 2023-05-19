@@ -1,5 +1,10 @@
-const jsonUrl = "/fh5Cars/data/cars.json";
-// const jsonUrl = "/data/cars.json";
+// const baseUrl = "";
+const baseUrl = "/fh5cars";
+
+const jsonUrl = `${baseUrl}/data/cars.json`;
+const audioUrl = `${baseUrl}/assets/wheelspin.mp3`;
+
+const audio = new Audio(audioUrl);
 
 let cars;
 let currentActiveCard;
@@ -28,6 +33,31 @@ const convertCarID = (carID) => {
   return idString;
 };
 
+const addToRecentSpins = (carID) => {
+  const cardContainer = $("#recent-spins .spin-cards");
+
+  // get the car data
+  const car = cars.find((car) => car["K' iD"] == carID);
+
+  const recentCard = `
+  <div class="spin-card">
+    <div class="spin-card--img">
+      <img src="https://www.kudosprime.com/fh5/images/cars/big/fh5_car_${convertCarID(carID)}.jpg?v=1" />
+    </div>
+    <div class="spin-card--content">
+      <h4><span>${car.Maker}</span></h4>
+      <h4>${car.Model}</h4>
+      <div class="tags">
+        <p class="year">${car.Year}</p>
+        <p class="class"><span class="letter ${car.Class}">${car.Class}</span><span class="score">${car.Score}</span></p>
+      </div>
+    </div>
+    </div>
+  `;
+
+  $(cardContainer).prepend(recentCard);
+};
+
 const animateCards = () => {
   currentSpin++;
 
@@ -54,6 +84,9 @@ const animateCards = () => {
   }, 250);
 
   console.log("Spin finished!", currentActiveCard);
+  audio.play();
+
+  addToRecentSpins(currentActiveCard.attr("data-id"));
 
   setTimeout(() => {
     currentActiveCard.removeClass("animate__finished");
@@ -75,7 +108,7 @@ const pickRandomCar = async (numberOfCars) => {
 
   randomCars.forEach((car, i) => {
     carCard = `
-    <div class="car--card" data-active="${i == 0 ? true : false}">
+    <div class="car--card" data-active="${i == 0 ? true : false}" data-id="${car["K' iD"]}">
         <div class="image-container">
         <img src="https://www.kudosprime.com/fh5/images/cars/big/fh5_car_${convertCarID(car["K' iD"])}.jpg?v=1">
         </div>
@@ -86,12 +119,11 @@ const pickRandomCar = async (numberOfCars) => {
         </div>
         <div class="car-tags">
           <div class="tag year"><span>${car.Year}</span></div>
-          <div class="tag car-type"><span>${car.Group.toLowerCase()}</span></div>
+          <div class="tag car-type"><span>${car.Group ? car.Group.toLowerCase() : ""}</span></div>
           <div class="tag class">
             <span> <b class="letter ${car.Class}">${car.Class} </b><b class="score">${car.Score}</b> </span>
           </div>
           <div class="tag drivetrain"><span>${car.DriveTrain}</span></div>
-
           <div class="tag hp">
             <span><b class="value">${car.StockHp}</b><b class="tag">PK</b></span>
           </div>
@@ -125,4 +157,20 @@ $("#spin-btn").on("click", () => {
   }, 500);
 
   $("#spin-btn").addClass("disabled");
+});
+
+$("#modal-open").on("click", (e) => {
+  const modal = $("#recent-spins");
+
+  if (modal.hasClass("active")) return;
+
+  modal.addClass("active");
+});
+
+$("#modal-close").on("click", (e) => {
+  const modal = $("#recent-spins");
+
+  if (!modal.hasClass("active")) return;
+
+  modal.removeClass("active");
 });
