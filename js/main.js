@@ -1,5 +1,5 @@
 // const baseUrl = "";
-const baseUrl = "/fh5cars";
+const baseUrl = "/fh5Cars";
 
 const jsonUrl = `${baseUrl}/data/cars.json`;
 const audioUrl = `${baseUrl}/assets/wheelspin.mp3`;
