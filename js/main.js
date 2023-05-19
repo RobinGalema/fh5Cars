@@ -1,5 +1,5 @@
-// const jsonUrl = "/fh5Cars/data/cars.json";
-const jsonUrl = "/data/cars.json";
+const jsonUrl = "/fh5Cars/data/cars.json";
+// const jsonUrl = "/data/cars.json";
 
 let cars;
 let currentActiveCard;
